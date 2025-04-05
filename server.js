@@ -14,19 +14,38 @@ const storeTypeRoutes = require('./routes/storeTypes');
 const app = express();
 
 // Middleware
-// Configuração do CORS
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://vpl-frontend.vercel.app'  // substitua pelo seu domínio do frontend
+];
+
 const corsOptions = {
-  origin: [
-    'http://localhost:3000', // substitua pelo seu domínio real
-    /\.vercel\.app$/ // permite todos os domínios vercel.app
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Bloqueado pelo CORS'));
+    }
+  },
   credentials: true,
-  optionsSuccessStatus: 200
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
 
+// Aplicar CORS como primeiro middleware
 app.use(cors(corsOptions));
+
+// Middleware para tratamento de erros CORS
+app.use((err, req, res, next) => {
+  if (err.message === 'Bloqueado pelo CORS') {
+    res.status(403).json({
+      status: 'error',
+      message: 'Origem não permitida'
+    });
+  } else {
+    next(err);
+  }
+});
 app.use(express.json());
 
 // Conectar ao MongoDB
