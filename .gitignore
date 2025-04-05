@@ -1,0 +1,122 @@
+# Dependências
+/node_modules
+/npm-debug.log
+/yarn-error.log
+/yarn-debug.log
+/.pnp
+.pnp.js
+package-lock.json
+
+# Arquivos de ambiente e configuração
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+config/*.json
+!config/default.json
+!config/example.json
+
+# Diretórios de build e produção
+/dist
+/build
+/out
+/.next
+
+# Arquivos de log
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diretório de coverage de testes
+/coverage
+/.nyc_output
+/jest-coverage
+
+# Arquivos temporários
+tmp/
+temp/
+.cache
+*.tmp
+*.temp
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# Configurações de IDE/Editores
+/.idea
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/launch.json
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos de banco de dados local
+*.sqlite
+*.sqlite3
+*.db
+/data
+
+# Diretórios de uploads e arquivos de mídia (se aplicável)
+/uploads
+/media
+/public/uploads
+/public/media
+
+# Arquivos de certificados e chaves
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# Arquivos de cache do TypeScript (se aplicável)
+*.tsbuildinfo
+.tscache
+
+# Diretórios específicos do framework (adicione conforme necessário)
+# Express
+/sessions
+
+# Nest.js
+/dist
+
+# Prisma
+/prisma/migrations/*
+!/prisma/migrations/.gitkeep
+
+# Sequelize
+/migrations/.gitkeep
+/seeders/.gitkeep
+
+# Documentação gerada automaticamente
+/docs/generated
+/api-docs
+
+# Pacotes e arquivos compactados
+*.zip
+*.tar.gz
+*.tgz
+*.rar
