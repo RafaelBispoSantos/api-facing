@@ -17,7 +17,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000', // Adicionando esta origem alternativa
-  'https://vpl-frontend.vercel.app'
+  'https://frontend-facings.vercel.app'
 ];
 
 const corsOptions = {
