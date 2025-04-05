@@ -16,20 +16,25 @@ const app = express();
 // Middleware
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://vpl-frontend.vercel.app'  // substitua pelo seu domínio do frontend
+  'http://127.0.0.1:3000', // Adicionando esta origem alternativa
+  'https://vpl-frontend.vercel.app'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
+    // Durante desenvolvimento, o origin pode ser null em algumas requisições
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.log('Origem bloqueada pelo CORS:', origin);
       callback(new Error('Bloqueado pelo CORS'));
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
 
 // Aplicar CORS como primeiro middleware
