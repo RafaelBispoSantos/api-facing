@@ -65,13 +65,18 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/store-types', storeTypeRoutes);
 
 // Servir o frontend em produção
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'API de Medição de Facings está funcionando',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      spaces: '/api/spaces',
+      categories: '/api/categories',
+      storeTypes: '/api/store-types'
+    }
   });
-}
+});
 
 // Tratar erro 404
 app.use((req, res) => {
