@@ -14,7 +14,19 @@ const storeTypeRoutes = require('./routes/storeTypes');
 const app = express();
 
 // Middleware
-app.use(cors());
+// Configuração do CORS
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // substitua pelo seu domínio real
+    /\.vercel\.app$/ // permite todos os domínios vercel.app
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Conectar ao MongoDB
