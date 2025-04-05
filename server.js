@@ -15,8 +15,7 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000', // Adicionando esta origem alternativa
+  
   'https://frontend-facings.vercel.app'
 ];
 
