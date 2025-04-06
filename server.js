@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 const allowedOrigins = [
   
-  'https://frontend-facings.vercel.app'
+  'https://frontend-facings.vercel.app' || 'https://facings.vercel.app/'
 ];
 
 const corsOptions = {
